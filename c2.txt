@@ -1,0 +1,12 @@
+clc;
+clear all;
+close all;
+Eb=input('Enter the energy per bit in joules:');
+No=input('Enter the PSD of Noise in microwatts/Hz:');
+M=input('Enter the number of symbol:');
+x=0:0.001:(Eb/No);
+Pe_qam=0.5*erfc(sqrt(0.4*x));
+plot(x,Pe_qam);grid
+xlabel('Signal to Noise Ratio(Eb/No)');
+ylabel('Probability of Error Pe');
+legend('Pe_qam')
