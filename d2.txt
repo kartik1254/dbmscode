@@ -1,0 +1,33 @@
+clc;
+close all;
+clear all;
+m=input('Enter the message:');
+P=input('Enter parity matrix:');
+k=length(m);
+Ik= eye(k);
+G=[Ik P];
+display('Generator matrix is')
+display(G);
+C=mod(m*G,2);
+display('code word is');
+display(C);
+e=input('Enter error vector');
+r=mod(C+e,2)
+display(r);
+n=length(C);
+ln_k=eye(n-k);
+H=[P' ln_k];
+display('Parity check matrix is');
+display(H);
+S=mod(r*H',2);
+display('Syndrom is');
+display(S);
+HT=H';
+if(S==0)
+display('correct');
+else
+display('received code vector is with error');
+end
+display('correct code word is :');
+CC=mod(r+e,2);
+display(CC);
