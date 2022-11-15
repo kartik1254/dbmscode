@@ -1,0 +1,125 @@
+clc ;
+close all;
+px = input('Enter the input probabilities');
+display(px);
+py =input('Enter the channel transition matrix'); 
+display(py);
+[m,n] = size(py);
+S =sum(py, 2);
+display(S);
+for i = 1:m
+for j = 1:n
+pxy(i, j)= py(i, j);
+end
+end
+display(pxy);
+PY = sum(pxy);
+display(PY);
+Hx = 0;
+for i =1:m
+Hx = Hx + px(i)*log2(1/px(i));
+end
+display(Hx);
+Hy = 0;
+for j =1:n
+Hy = Hy + PY(j)*log2(1/PY(j));
+end
+display(Hy);
+Hxy = 0;
+for i = 1:m
+for j = 1:n
+Hxy = Hxy + pxy(i, j)*log2(1/pxy(i, j));
+end
+end
+display(Hxy);
+Hxy1 = Hxy - Hy; display(Hxy1);
+Hxy2 = Hxy - Hx; display(Hxy2);
+Ixy = Hx + Hy - Hxy;
+display(Ixy);
+id = eye(m, n);
+C = log(1);
+if py ==id
+    disp('Noise free channel'); 
+elseif m==2 && n==2 && py(1, 1) && py(1, 2) == py(2,1)
+disp('Binary Symmetric channel');
+elseif C>Hx
+disp('Error free channel');
+else 
+    disp('Noisy channel');
+end
+
+
+
+Output:-
+
+Enter the input probabilities
+[0.1 0.1 0.4 0.4]
+
+px =
+
+    0.1000    0.1000    0.4000    0.4000
+
+Enter the channel transition matrix
+[0.1 0.6 0.1 0.2; 0.1 0.1 0.4 0.4; 0.4 0.4 0.1 0.1; 0.3 0.3 0.2 0.2]
+
+
+py =
+
+    0.1000    0.6000    0.1000    0.2000
+    0.1000    0.1000    0.4000    0.4000
+    0.4000    0.4000    0.1000    0.1000
+    0.3000    0.3000    0.2000    0.2000
+
+
+S =
+
+     1
+     1
+     1
+     1
+
+
+pxy =
+
+    0.1000    0.6000    0.1000    0.2000
+    0.1000    0.1000    0.4000    0.4000
+    0.4000    0.4000    0.1000    0.1000
+    0.3000    0.3000    0.2000    0.2000
+
+
+PY =
+
+    0.9000    1.4000    0.8000    0.9000
+
+
+Hx =
+
+    1.7219
+
+
+Hy =
+
+   -0.1484
+
+
+Hxy =
+
+    6.9858
+
+
+Hxy1 =
+
+    7.1342
+
+
+Hxy2 =
+
+    5.2638
+
+
+Ixy =
+
+   -5.4123
+
+Noisy channel
+>> 
