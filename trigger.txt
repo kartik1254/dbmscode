@@ -11,10 +11,10 @@ Book_Type VARCHAR2(20),
 Issued_By VARCHAR2(20)
 );
 
-INSERT INTO Library VALUES (1,'Harry Potter','Fiction','Garry');
-INSERT INTO Library VALUES (2,'The Alchemist','Fiction','Abbas');
-INSERT INTO Library VALUES (3,'The Monk Who Sold His Ferrari','Fiction','Sohum');
-INSERT INTO Library VALUES (4,'The Secret','Fiction','Itachi');
+INSERT INTO Library VALUES (1,'Harris','Fiction','Gaurav');
+INSERT INTO Library VALUES (2,'one piece','Fiction','Amol');
+INSERT INTO Library VALUES (3,'trading in zone','stock market','Samir');
+INSERT INTO Library VALUES (4,'fakira','Fiction','ram');
 
 
 CREATE TABLE Back_UP
@@ -39,6 +39,6 @@ END;
 -- this will trigger the trigger method
 UPDATE Library
 SET Issued_By = 'Eleven'
-WHERE Issued_By = 'Itachi';
+WHERE Issued_By = 'ram';
 
 SELECT * FROM Back_UP;
