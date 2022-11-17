@@ -4,11 +4,9 @@ first_name VARCHAR2(50),
 last_name VARCHAR2(50)
 );
 
-INSERT INTO student12c (first_name, last_name)
-VALUES ('Jason', 'Smith');
+INSERT INTO student12c (first_name, last_name) VALUES ('Jason', 'Smith');
 
-INSERT INTO student12c (first_name, last_name)
-VALUES ('John', 'Cot');
+INSERT INTO student12c (first_name, last_name) VALUES ('John', 'Cot');
 
 SELECT student_id, first_name, last_name
 FROM student12c
